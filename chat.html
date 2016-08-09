@@ -1,0 +1,49 @@
+<html>
+<head> <title> Chat Box </title>
+</head>
+<script  type="text/javascript">
+function upload()
+{
+   //str contains the message to be transmitted
+  var str = document.getElementById("text_to_send").value;
+   var  xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange= function()
+   {
+	   if(xhttp.readyState==4 && xhttp.status==200)
+	   {
+          
+	   }
+   }
+   xhttp.open("GET","chat.php?msg="+str,true);
+   xhttp.send();
+}
+// This function uses ajax for recieving the data send by the other user
+// this.value works with input type
+function download()
+{      
+	    var re_xhttp = new XMLHttpRequest();
+        var  result_text=document.getElementById("result");
+        re_xhttp.onreadystatechange=function()
+        {
+            if(re_xhttp.status==200 || re_xhttp.readyState ==4)
+            { 
+                    result_text.value=re_xhttp.responseText;  
+            }
+        }     
+     	     
+        re_xhttp.open("GET","get_msg.php",true);
+        re_xhttp.send();     
+}
+function ne()
+{
+	var x = document.getElementById("result");
+	x.value="windows running script";
+}
+</script>
+<body >
+	 
+	    <input type="text" name="message" id="text_to_send"/>
+	    <input type="text" id="result" onfocus="download();" onkeypress="download();" onwaiting="download();" onchange="download();" />
+        <input type="button" name="send" value="Send Message" onclick="upload();"/>
+</body>
+</html>
