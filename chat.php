@@ -6,5 +6,5 @@ $f=fopen("chat.txt","a");
 echo fwrite($f,$m);
 fclose($f);
 
-//
+//Check
 ?>
